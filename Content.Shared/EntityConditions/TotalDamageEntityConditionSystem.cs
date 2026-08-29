@@ -31,3 +31,4 @@ public sealed partial class TotalDamageCondition : EntityConditionBase<TotalDama
             ("max", Max == FixedPoint2.MaxValue ? int.MaxValue : Max.Float()),
             ("min", Min.Float()));
 }
+// DamageableSystem.GetTotalDamage()
