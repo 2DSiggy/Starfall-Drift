@@ -28,6 +28,7 @@
   color: "#3a1d8a"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
@@ -137,12 +138,14 @@
   color: "#bd5902"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
           types:
-            Radiation: -3
-            Blunt: 1.5
+            Radiation: -2 # Funky
+          groups:
+            Brute: 0.2 # funky
 
 - type: reagent
   id: Bicaridine
@@ -154,6 +157,7 @@
   color: "#ffaa00"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:EvenHealthChange
         damage:
@@ -238,6 +242,7 @@
   color: "#215263"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
@@ -271,12 +276,13 @@
   color: "#0041a8"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
-          types:
-            Asphyxiation: -1
-            Bloodloss: -0.5
+          groups:
+            Airloss: -2 # Funkychem- aka 1 asphyx/blood damage
+          #  Bloodloss: -0.5
       - !type:HealthChange
         conditions:
           - !type:ReagentCondition
@@ -284,7 +290,7 @@
             min: 20
         damage:
           types:
-            Asphyxiation: 3
+            Asphyxiation: 2
             Cold: 1
 
 - type: reagent
@@ -297,6 +303,7 @@
   color: "#4da0bd"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
@@ -331,6 +338,7 @@
   color: "#d2fffa"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:AdjustReagent
         conditions:
@@ -349,7 +357,7 @@
           max: 20
         damage:
           types:
-            Asphyxiation: -3
+            Asphyxiation: -2 # Funkychem
             Poison: -0.5
       - !type:EvenHealthChange
         conditions:
@@ -360,8 +368,8 @@
           reagent: Epinephrine
           max: 20
         damage:
-          Brute: -0.5
-          Burn: -0.5
+          Brute: -0.3 #Slight nerf from 0.5 to 0.3 due to now being evenheal
+          Burn: -0.3
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -411,11 +419,12 @@
   color: "#4cb580"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
           types:
-            Radiation: -1
+            Radiation: -0.5
       - !type:Vomit
         probability: 0.02
       - !type:HealthChange
@@ -425,7 +434,7 @@
           min: 30
         damage:
           types:
-           Heat: 2
+           Heat: 1.5 # Funkychem
       - !type:Jitter
         conditions:
         - !type:ReagentCondition
@@ -485,6 +494,7 @@
   color: "#bf3d19"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
@@ -520,11 +530,12 @@
   color: "#ff7db5"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.4 # Funkychem
       effects:
       - !type:HealthChange
         damage:
           types:
-            Cold: -4
+            Cold: -2 # Funkychem
       - !type:AdjustTemperature
         conditions:
         - !type:TemperatureCondition
@@ -640,11 +651,14 @@
   color: "#9423FF"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
-      - !type:EvenHealthChange
+      - !type:EvenHealthChange #Feeling out how to balance this to be similar to oldfunky balance while maintaining evenheal
         damage:
-          Brute: -1.75
-          Airloss: -1
+          groups:
+            Brute: -2 # funky
+          types:
+            Asphyxiation: -1.5 # funky
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -755,11 +769,12 @@
   color: "#f4dab8"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
           types:
-            Caustic: -5
+            Caustic: -2 # funky - 10 per u
 
 - type: reagent
   id: Stellibinin
@@ -771,11 +786,12 @@
   color: "#2b2f77"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
           types:
-            Poison: -4
+            Poison: -3 # funky
       - !type:AdjustReagent
         conditions:
         - !type:ReagentCondition
@@ -845,21 +861,20 @@
   color: "#00e5ff"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
-      - !type:EvenHealthChange
-        conditions:
-        - !type:MobStateCondition # no healing in crit so that dedicated single damage type meds can still have a niche.
-          mobstate: Alive
-        damage:
-          Brute: -1
-          Burn: -1
       - !type:HealthChange
         conditions:
-        - !type:MobStateCondition
-          mobstate: Alive
-        damage:
+        - !type:TotalDamageCondition #NONFUNCTIONAL FIGURE OUT A SOLUTION
+          max: 40 # Funkychem
+        damage: # Funkychem
+          groups:
+            Brute: -0.9
           types:
-            Poison: -0.5 # Same as what it was before the second coming of offmed
+            Poison: -0.3 #Should be about what it was when it healed the toxin group
+            Heat: -0.3
+            Shock: -0.3
+            Cold: -0.3
 
 - type: reagent
   id: Lipozine
@@ -901,10 +916,11 @@
       effects:
       - !type:EvenHealthChange
         damage:
-          Burn: -2
-          Toxin: -2
-          Airloss: -2
-          Brute: -2
+          groups: #Damage calc i used is amount of subdamagetypes times 0.5. i think this will be balanced
+            Burn: -2 # funky
+            Toxin: -1 # funky
+            Airloss: -1 # funky
+            Brute: -1.5 # funky
 
 - type: reagent
   id: Ultravasculine
@@ -916,6 +932,7 @@
   color: "#520e30"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:EvenHealthChange
         conditions:
@@ -924,7 +941,7 @@
           min: 0
           max: 20
         damage:
-          Toxin: -6
+          Toxin: -4.5
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -933,14 +950,14 @@
           max: 20
         damage:
           types:
-            Blunt: 1.5
+            Blunt: 1
       - !type:EvenHealthChange
         conditions:
         - !type:ReagentCondition
           reagent: Ultravasculine
           min: 20
         damage:
-          Toxin: -2
+          Toxin: -1.5
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -948,7 +965,7 @@
           min: 20
         damage:
           types:
-            Blunt: 6
+            Blunt: 4.5
       - !type:AdjustReagent
         conditions:
         - !type:ReagentCondition
@@ -1069,12 +1086,12 @@
   color: "#e0a5b9"
   metabolisms:
     Bloodstream:
-      metabolismRate: 0.25
+      metabolismRate: 0.2 #reduced to be less than other chems
       effects:
       - !type:HealthChange
         damage:
           types:
-            Caustic: -1.25 # 5 per u
+            Caustic: -.6 # 3 per u because i hate sigy
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -1082,7 +1099,7 @@
           min: 16
         damage:
           types:
-            Heat: 1 # 4 per u
+            Heat: 0.4 # 1 per u
       - !type:Jitter
         conditions:
         - !type:ReagentCondition
@@ -1129,18 +1146,16 @@
   color: "#283332"
   metabolisms:
     Bloodstream:
-      metabolismRate: 0.25
+      metabolismRate: 0.2
       effects:
       - !type:HealthChange
         damage:
           types:
-            Slash: -2 # 8 per u
-            Heat: 0.2 # 0.8 per u
+            Slash: -1 # funky
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
-          reagent: Lacerinol
-          min: 12
+          min: 16 # funky
         damage:
           types:
             Cold: 1.5 # 6 per u
@@ -1155,21 +1170,21 @@
   color: "#b9bf93"
   metabolisms:
     Bloodstream:
-      metabolismRate: 0.25
+      metabolismRate: 0.2
       effects:
       - !type:HealthChange
         damage:
           types:
-            Piercing: -2.5 # 10 per u
-            Radiation: 0.05 # 0.2 per u, 3 for 15u
+            Piercing: -1 # funky
+            Blunt: 0.1
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
           reagent: Puncturase
-          min: 12
+          min: 15.5 # funky
         damage:
           types:
-            Blunt: 3 # 12 per u
+            Blunt: 3 # funky
 
 - type: reagent
   id: Bruizine
@@ -1181,22 +1196,20 @@
   color: "#ff3636"
   metabolisms:
     Bloodstream:
-      metabolismRate: 0.25
+      metabolismRate: 0.2
       effects:
       - !type:HealthChange
         damage:
           types:
-            Blunt: -2.25 # 9 per u
-      - !type:SatiateHunger
-        factor: -1
+            Blunt: -1 # funky
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
           reagent: Bruizine
-          min: 10.5
+          min: 15.5 # funky
         damage:
           types:
-            Poison: 2.5 # 10 per u
+            Poison: 3 # funky
 
 - type: reagent
   id: Holywater
@@ -1218,6 +1231,8 @@
         amount: 2.5
       - !type:HealthChange
         conditions:
+        - !type:TotalDamageCondition
+          max: 50
         damage:
           types:
             Blunt: -0.2
@@ -1229,7 +1244,8 @@
     Extinguish:
       methods: [ Touch ]
       effects:
-      - !type:Extinguish
+      - !type:ExtinguishReaction
+        # begin funky
     Acidic:
       methods: [ Touch ]
       effects:
@@ -1238,6 +1254,7 @@
         damage:
           types:
             Holy: 0.5
+        # end funky
   plantMetabolism:
   - !type:PlantAdjustWater
     amount: 1
@@ -1254,7 +1271,7 @@
   color: "#aa4308"
   metabolisms:
     Bloodstream:
-      metabolismRate: 0.1 # slow metabolism to not be a godly combat med, its for treating burn victims efficiently
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:HealthChange
         damage:
@@ -1265,7 +1282,7 @@
         conditions:
         - !type:ReagentCondition
           reagent: Pyrazine
-          min: 20
+          min: 21
         damage:
           types:
             Slash: 0.5
@@ -1274,13 +1291,13 @@
         conditions:
         - !type:ReagentCondition
           reagent: Pyrazine
-          min: 15
+          min: 21
         probability: 0.1
       - !type:Emote
         conditions:
         - !type:ReagentCondition
           reagent: Pyrazine
-          min: 20
+          min: 21 # funky
         emote: Scream
         probability: 0.2
 
@@ -1294,42 +1311,42 @@
   color: "#8147ff"
   metabolisms:
     Bloodstream:
-      metabolismRate: 0.25
+      metabolismRate: 0.2
       effects:
       # heals shocks and removes shock chems
       - !type:HealthChange
         damage:
           types:
-            Shock: -1.5 # 6 per u
+            Shock: -2 # funky
       - !type:AdjustReagent
         reagent: Licoxide
-        amount: -2
+        amount: -4
       - !type:AdjustReagent
         reagent:  Tazinide
-        amount: -2
+        amount: -4
       # makes you a little chilly when not oding
       - !type:AdjustTemperature
-        amount: -2500
+        amount: -2400 # Funkychem
       # od makes you freeze to death
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
           reagent: Insuzine
-          min: 12
+          min: 16
         damage:
           types:
-            Cold: 1 # 4 per u
+            Cold: 2
       - !type:AdjustTemperature
         conditions:
         - !type:ReagentCondition
           reagent: Insuzine
-          min: 12
+          min: 16
         amount: -30000
       - !type:Jitter
         conditions:
         - !type:ReagentCondition
           reagent: Insuzine
-          min: 12
+          min: 16
 
 - type: reagent
   id: Opporozidone #Name based of an altered version of the startreck chem "Opporozine"
@@ -1353,24 +1370,33 @@
             mobstate: Dead
 
 - type: reagent
-  id: Arcryox
-  name: reagent-name-arcryox
+  id: Necrosol # More interesting than Arcryox
+  name: reagent-name-necrosol
   group: Medicine
-  desc: reagent-desc-arcryox
-  physicalDesc: reagent-physical-desc-arcryox
+  desc: reagent-desc-necrosol
+  physicalDesc: reagent-physical-desc-necrotic
   flavor: medicine
-  color: "#0cbfe9"
+  color: "#86a5bd"
   worksOnTheDead: true
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: -5
+  - !type:PlantAdjustHealth
+    amount: 5
+  - !type:PlantCryoxadone {}
   metabolisms:
-    Bloodstream:
+    Medicine:
       effects:
-      - !type:EvenHealthChange
-        conditions:
-        - !type:TemperatureCondition
-          max: 213.0
-        damage:
-          Brute: -3
-          Burn: -3
+        - !type:HealthChange
+          conditions:
+          - !type:TemperatureCondition
+            max: 213.0
+          damage:
+            groups:
+              Brute: -4
+              Burn: -5
+            types:
+              Poison: -2
 
 - type: reagent
   id : Aloxadone
@@ -1389,7 +1415,10 @@
         - !type:TemperatureCondition
           max: 213.0
         damage:
-          Burn: -4.5
+          types:
+            Heat: -5.0
+            Shock: -3.0
+            Caustic: -1.0
 
 - type: reagent
   id : Mannitol # currently this is just a way to create psicodine
@@ -1466,6 +1495,7 @@
   color: "#baa15d"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.2 # Funkychem
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectRadiationProtection

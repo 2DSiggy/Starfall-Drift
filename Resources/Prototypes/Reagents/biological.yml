@@ -30,8 +30,13 @@
         - !type:MetabolizerTypeCondition
           type: [ Bloodsucker ]
         damage:
-          Brute: -3
-          Burn: -1.25
+          types:
+            Blunt: -0.5
+            Slash: -0.5
+            Piercing: -0.5
+            Heat: -0.5
+            Cold: -0.5
+            Shock: -0.5
     Bloodstream: # Don't inject someone else's blood into yourself! Your own blood won't actually metabolise.
       effects:
       - !type:HealthChange

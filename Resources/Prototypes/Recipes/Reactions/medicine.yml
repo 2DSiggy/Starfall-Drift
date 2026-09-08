@@ -536,7 +536,7 @@
   reactants:
     Leporazine:
       amount: 1
-    Dermaline:
+    Aiuri:
       amount: 1
     Carbon:
       amount: 1
@@ -550,7 +550,7 @@
   reactants:
     Leporazine:
       amount: 1
-    Kelotane:
+    Aiuri:
       amount: 1
     Silicon:
       amount: 1
@@ -571,17 +571,18 @@
     Opporozidone: 3
 
 - type: reaction
-  id: Arcryox
+  id: Necrosol
+  impact: Medium
   minTemp: 370
   reactants:
-    Lithium:
-      amount: 1
-    Tricordrazine:
+    Blood:
+      amount: 3
+    Omnizine:
       amount: 1
     Cryoxadone:
-      amount: 1
+      amount: 2
   products:
-    Arcryox: 3
+    Necrosol: 2
 
 - type: reaction
   id: Aloxadone
