@@ -358,7 +358,7 @@
             Burn: -4.5
             Toxin: -4.5
             Airloss: -6
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: -0.5
 
 - type: reagent

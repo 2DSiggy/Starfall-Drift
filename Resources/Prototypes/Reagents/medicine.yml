@@ -1155,6 +1155,7 @@
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
+          reagent: Lacerinol
           min: 16 # funky
         damage:
           types:
