@@ -711,8 +711,9 @@ ClothingUniformJumpsuitParamedicNT: ClothingUniformJumpsuitParamedic
 # 2025-08-29
 PrefilledSyringe: Syringe
 
+#Starfall Change, I think this breaks things
 # 2025-09-12
-BaseChemistryEmptyVial: ChemistryEmptyVial
+#BaseChemistryEmptyVial: ChemistryEmptyVial
 
 # 2025-10-6
 BibleTanakh: null
@@ -756,8 +757,9 @@ SpacemenFigureSpawner: SpacemenFigurineSpawner90
 HandheldHealthAnalyzerUnpowered: HandheldHealthAnalyzer
 HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
 
+#Starfall Change - Revert medborg changes
 #2026-01-09
-BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
+#BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
 
 # 2026-01-14
 HeadHuman: OrganHumanHead
