@@ -848,8 +848,8 @@
       effects:
       - !type:EvenHealthChange
         conditions:
-        - !type:MobStateCondition # no healing in crit so that dedicated single damage type meds can still have a niche.
-          mobstate: Alive
+        - !type:TotalDamageCondition # Starfall - Temp condition just to commit this so i can remember how this shit works
+          max: 40
         damage:
           Brute: -1
           Burn: -1
