@@ -222,10 +222,12 @@ public abstract partial class SharedDefibrillatorSystem : EntitySystem
                 rdnr.Chance -= 0.1f;
             }
         }
-        else
+        else if (_mobState.IsDead(target, targetMobState)) // imp, added to the entire else
         {
+            /* imp, made the aphyx heal always apply since dead check is done for the entire else
             if (_mobState.IsDead(target, targetMobState))
-                _damageable.TryChangeDamage(target, ent.Comp.ZapHeal, true, origin: user);
+            */
+            _damageable.TryChangeDamage(target, ent.Comp.ZapHeal, true, origin: user);
 
             if (TryComp<MobThresholdsComponent>(target, out var targetThresholds) &&
                 _mobThreshold.TryGetThresholdForState(target, MobState.Dead, out var threshold, targetThresholds) &&
