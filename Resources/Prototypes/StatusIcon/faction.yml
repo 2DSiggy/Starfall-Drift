@@ -7,7 +7,7 @@
     - Zombie
     - InitialInfected
   icon:
-    sprite: &job-icon-rsi /Textures/_Funkystation/Interface/Misc/job_icons.rsi # Funky - Any antag faction icons that are already ID card options go here
+    sprite: &faction-icon-rsi /Textures/Interface/Misc/job_icons.rsi
     state: Zombie
 
 - type: factionIcon
@@ -19,7 +19,7 @@
     - InitialInfected
     - Zombie
   icon:
-    sprite: &antag-icon-rsi /Textures/_Funkystation/Interface/Misc/antag_icons.rsi # Funky - All other antag faction icons go here
+    sprite: *faction-icon-rsi
     state: InitialInfected
 
 - type: factionIcon
@@ -31,7 +31,7 @@
       - ShowAntagIcons
       - Revolutionary
   icon:
-    sprite: *antag-icon-rsi # Funky
+    sprite: *faction-icon-rsi
     state: Revolutionary
 
 - type: factionIcon
@@ -43,7 +43,7 @@
       - ShowAntagIcons
       - Revolutionary
   icon:
-    sprite: *antag-icon-rsi # Funky
+    sprite: *faction-icon-rsi
     state: HeadRevolutionary
 
 - type: factionIcon
@@ -51,5 +51,5 @@
   priority: 0
   locationPreference: Left
   icon:
-    sprite: *job-icon-rsi # Funky
+    sprite: *faction-icon-rsi
     state: Syndicate
