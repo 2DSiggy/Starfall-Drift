@@ -1226,10 +1226,6 @@
       effects:
       - !type:SatiateThirst
         factor: 3
-    Bloodstream: # begin funkystation
-      effects:
-      - !type:DeCultify
-        amount: 2.5
       - !type:HealthChange
         conditions:
         - !type:TotalDamageCondition
