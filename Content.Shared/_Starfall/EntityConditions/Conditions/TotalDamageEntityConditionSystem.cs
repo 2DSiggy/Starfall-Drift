@@ -1,4 +1,4 @@
-using Content.Shared.Damage.Components;
+﻿using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.EntityConditions;
 using Content.Shared.FixedPoint;
@@ -9,13 +9,13 @@ namespace Content.Shared._Starfall.EntityConditions.Conditions;
 /// <summary>
 /// Returns true if this entity can take damage and if its total damage is within a specified minimum and maximum.
 /// </summary>
-/// <inheritdoc cref="EntityConditionSystem{T, TCondition}"/>
+/// <inheritdoc cref="EntityConditionSystem{T,TCon}"/>
 public sealed partial class TotalDamageEntityConditionSystem : EntityConditionSystem<DamageableComponent, TotalDamageCondition>
 {
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     protected override void Condition(Entity<DamageableComponent> entity, ref EntityConditionEvent<TotalDamageCondition> args)
     {
-        var total = _damageableSystem.GetTotalDamage(entity.AsNullable());
+        var total = _damageable.GetTotalDamage(entity.Owner);
         args.Result = total >= args.Condition.Min && total <= args.Condition.Max;
     }
 }

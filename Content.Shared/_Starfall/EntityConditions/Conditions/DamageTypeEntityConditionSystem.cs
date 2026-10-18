@@ -1,4 +1,5 @@
-using Content.Shared.Damage.Components;
+﻿using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.EntityConditions;
 using Content.Shared.FixedPoint;
@@ -7,17 +8,17 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Starfall.EntityConditions.Conditions;
 
 /// <summary>
-/// Returns true if this entity can take damage and if its total damage is within a specified minimum and maximum.
+/// Returns true if this entity can take damage and if its damage of a given damage type is within a specified minimum and maximum.
 /// </summary>
-/// <inheritdoc cref="EntityConditionSystem{T, TCondition}"/>
-/// This is currently just identical to TotalDamageEntityConditionSystem.
+/// <inheritdoc cref="EntityConditionSystem{T,TCon}"/>
 public sealed partial class DamageTypeEntityConditionSystem : EntityConditionSystem<DamageableComponent, DamageTypeCondition>
 {
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
+
     protected override void Condition(Entity<DamageableComponent> entity, ref EntityConditionEvent<DamageTypeCondition> args)
     {
-        var total = _damageableSystem.GetTotalDamage(entity.AsNullable());
-        args.Result = total >= args.Condition.Min && total <= args.Condition.Max;
+        var value = _damageable.GetPositiveDamage(entity).DamageDict.GetValueOrDefault(args.Condition.DamageType);
+        args.Result = value >= args.Condition.Min && value <= args.Condition.Max;
     }
 }
 
@@ -30,8 +31,12 @@ public sealed partial class DamageTypeCondition : EntityConditionBase<DamageType
     [DataField]
     public FixedPoint2 Min = FixedPoint2.Zero;
 
+    [DataField(required: true)]
+    public ProtoId<DamageTypePrototype> DamageType;
+
     public override string EntityConditionGuidebookText(IPrototypeManager prototype) =>
-        Loc.GetString("entity-condition-guidebook-total-damage",
+        Loc.GetString("entity-condition-guidebook-type-damage",
             ("max", Max == FixedPoint2.MaxValue ? int.MaxValue : Max.Float()),
-            ("min", Min.Float()));
+            ("min", Min.Float()),
+            ("type", prototype.Index(DamageType).LocalizedName));
 }

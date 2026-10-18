@@ -848,7 +848,7 @@
       effects:
       - !type:EvenHealthChange
         conditions:
-        - !type:TotalDamageCondition # Starfall - Temp condition just to commit this so i can remember how this shit works
+        - !type:TotalDamageCondition # Starfall - Restore removed functionality, look at the balance of this again later
           max: 40
         damage:
           Brute: -1
