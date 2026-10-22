@@ -848,8 +848,8 @@
       effects:
       - !type:EvenHealthChange
         conditions:
-        - !type:MobStateCondition # no healing in crit so that dedicated single damage type meds can still have a niche.
-          mobstate: Alive
+        - !type:TotalDamageCondition # Starfall - Restore removed functionality, look at the balance of this again later
+          max: 40
         damage:
           Brute: -1
           Burn: -1
