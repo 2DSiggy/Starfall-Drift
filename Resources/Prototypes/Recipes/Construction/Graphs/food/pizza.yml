@@ -5,7 +5,7 @@
   - node: start
     entity: FoodDough
     edges:
-    - to: flat
+    - to: flat #starfall
       steps:
       - tool: Rolling
         doAfter: 1

@@ -363,7 +363,7 @@
   - type: Tag
     tags: []
 
-- type: entity
+- type: entity #starfall
   parent: [FoodDoughBase, BaseSlicingRefinableFood]
   id: FoodDough
   name: dough
