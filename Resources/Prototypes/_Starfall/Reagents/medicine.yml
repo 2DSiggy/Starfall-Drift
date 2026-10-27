@@ -1,3 +1,48 @@
+#Brutes
+- type: reagent
+  id: Libital
+  name: reagent-name-libital
+  desc: reagent-desc-libital
+  group: Medicine
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#e8d199"
+    metabolisms:
+      Bloodstream:
+        metabolismRate: 0.2
+        effects: #1.2 in brute
+
+- type: reagent
+  id: Probital
+  name: reagent-name-probital
+  desc: reagent-desc-probital
+  group: Medicine
+  physicalDesc: reagent-physical-desc-syrupy
+  flavor: medicine
+  color: "#e8e699"
+    metabolisms:
+      Bloodstream:
+        metabolismRate: 0.2
+        effects: #1.8 in brute
+
+- type: reagent
+  id: SalicylicAcid
+  name: reagent-name-salicylicacid
+  desc: reagent-desc-salicylicacid
+  group: Medicine
+  physicalDesc: reagent-physical-desc-mucus-like
+  flavor: medicine
+  color: "#f9e0e9"
+    metabolisms:
+      Bloodstream:
+        metabolismRate: 0.2
+        effects: #2.4 in brute if over 30, otherwise it's 0.6
+
+#Burns
+
+
+
+
 - type: reagent
   id: Chepagepant
   name: reagent-name-chepagepant
