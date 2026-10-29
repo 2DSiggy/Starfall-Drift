@@ -7,25 +7,26 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#e8d199"
-    metabolisms:
-      Bloodstream:
-        metabolismRate: 0.2
-        effects:
-        - !type:HealthChange
-          damage:
-            groups:
-              Brute: -1.2 #2 per type per unit. No evenheal
-        - !type:HealthChange
-          conditions:
-          - !type:ReagentCondition
-            reagent: Libital
-            min: 20
-          damage: Heat: 1 #5 per unit.
-        - !type:Jitter
-          conditions:
-          - !type:ReagentCondition
-            reagent: Libital
-            min: 20
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.2
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Brute: -1.2 #2 per type per unit. No evenheal
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Libital
+          min: 20
+        damage:
+          Heat: 1 #5 per unit.
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: Libital
+          min: 20
 
 - type: reagent
   id: Probital
@@ -35,34 +36,34 @@
   physicalDesc: reagent-physical-desc-syrupy
   flavor: medicine
   color: "#e8e699"
-    metabolisms:
-      Bloodstream:
-        metabolismRate: 0.2
-        effects:
-          - !type:HealthChange
-            conditions:
-            - !type:ReagentCondition
-              reagent: Probital
-              max: 20 #Only heals when below 20u.
-            damage:
-              groups:
-                Brute: -1.8 #3 per type per unit. No evenheal
-            - !type:ChemVomit
-              conditions:
-              - !type:ReagentCondition
-                reagent: Probital
-                min: 20
-              probability: 0.02
-            - !type:MovementSpeedModifier
-              walkSpeedModifier: 0.7
-              sprintSpeedModifier: 0.7
-            - !type:MovementSpeedModifier
-              conditions:
-              - !type:ReagentCondition
-                reagent: Probital
-                min: 20
-              walkSpeedModifier: 0.35
-              sprintSpeedModifier: 0.35
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.2
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Probital
+          max: 20 #Only heals when below 20u.
+        damage:
+          groups:
+            Brute: -1.8 #3 per type per unit. No evenheal
+      - !type:Vomit
+        conditions:
+        - !type:ReagentCondition
+          reagent: Probital
+          min: 20
+        probability: 0.02
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 0.7
+        sprintSpeedModifier: 0.7
+      - !type:MovementSpeedModifier
+        conditions:
+        - !type:ReagentCondition
+          reagent: Probital
+          min: 20
+        walkSpeedModifier: 0.35
+        sprintSpeedModifier: 0.35
 
 - type: reagent
   id: SalicylicAcid
@@ -72,47 +73,44 @@
   physicalDesc: reagent-physical-desc-mucus-like
   flavor: medicine
   color: "#f9e0e9"
-    metabolisms:
-      Bloodstream:
-        metabolismRate: 0.2
-        effects:
-        - !type:EvenHealthChange
-          conditions:
-          - !type:DamageGroupCondition
-            group: Brute
-            max: 30
-          damage:
-            groups:
-              Brute: -0.45 #0.15 per type
-        - !type:EvenHealthChange
-          conditions:
-          - !type:DamageGroupCondition
-            group: Brute
-            min: 30
-          damage:
-            groups:
-              Brute: -2.25 #0.75 per type
-        - !type:HealthChange
-          conditions:
-          - !type:ReagentCondition
-            reagent: SalicylicAcid
-            min: 15.5
-          damage:
-            groups:
-              Burn: 2 #0.5 to heat, shock, cold, and caustic
-        - !type:EvenHealthChange
-          conditions:
-          - !type:ReagentCondition
-            reagent: SalicylicAcid
-            min: 15.5
-          damage:
-            groups:
-              Brute: -2.25 #heals an extra time during OD
-        - !type:Jitter
-          conditions:
-          - !type:ReagentCondition
-            reagent: SalicylicAcid
-            min: 15.5
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.2
+      effects:
+      - !type:EvenHealthChange
+        conditions:
+        - !type:DamageGroupCondition
+          group: Brute
+          max: 30
+        damage:
+          Brute: -0.45 #0.15 per type
+      - !type:EvenHealthChange
+        conditions:
+        - !type:DamageGroupCondition
+          group: Brute
+          min: 30
+        damage:
+          Brute: -2.25 #0.75 per type
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: SalicylicAcid
+          min: 15.5
+        damage:
+          groups:
+            Burn: 2 #0.5 to heat, shock, cold, and caustic
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: SalicylicAcid
+          min: 15.5
+        damage:
+          Brute: -2.25 #heals an extra time during OD
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: SalicylicAcid
+          min: 15.5
 
 #Burns
 - type: reagent
@@ -123,29 +121,29 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: medicine
   color: "#a69ff4"
-    metabolisms:
-      Bloodstream:
-        metabolismRate: 0.2
-        effects:
-        - !type:HealthChange
-          damage:
-            types:
-              Heat: -0.4 #2 per type per unit. No evenheal
-              Cold: -0.4
-              Shock: -0.4
-        - !type:HealthChange
-          conditions:
-          - !type:ReagentCondition
-            reagent: Aiuri
-            min: 20
-          damage:
-            types:
-              Blunt: 1 #5 per unit.
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.2
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -0.4 #2 per type per unit. No evenheal
+            Cold: -0.4
+            Shock: -0.4
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Aiuri
+          min: 20
+        damage:
+          types:
+            Blunt: 1 #5 per unit.
       - !type:Jitter
-      conditions:
-      - !type:ReagentCondition
-        reagent: Aiuri
-        min: 20
+        conditions:
+        - !type:ReagentCondition
+          reagent: Aiuri
+          min: 20
 
 - type: reagent
   id: Lenturi
@@ -155,31 +153,31 @@
   physicalDesc: reagent-physical-desc-tropical
   flavor: medicine
   color: "#634aef"
-    metabolisms:
-      Bloodstream:
-        metabolismRate: 0.2
-        effects:
-        - !type:HealthChange
-          damage:
-            types:
-              Heat: -0.6 #3 per type per unit. No evenheal
-              Cold: -0.6
-              Shock: -0.6
-        - !type:Satiate
-          satiationType: Thirst
-          factor: -1
-        - !type:Jitter
-          conditions:
-          - !type:ReagentCondition
-            reagent: Lenturi
-            min: 20 #Overdose
-        - !type:Satiate
-          conditions:
-          - !type:ReagentCondition
-            reagent: Lenturi
-            min: 20
-          satiationType: Thirst
-          factor: -3 #Basically do the non-OD effect three extra times when ODing.
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.2
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -0.6 #3 per type per unit. No evenheal
+            Cold: -0.6
+            Shock: -0.6
+      - !type:Satiate
+        satiationType: Thirst
+        factor: -1
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: Lenturi
+          min: 20 #Overdose
+      - !type:Satiate
+        conditions:
+        - !type:ReagentCondition
+          reagent: Lenturi
+          min: 20
+        satiationType: Thirst
+        factor: -3 #Basically do the non-OD effect three extra times when ODing.
 
 - type: reagent
   id: Oxandrolone #This one is a doozy
@@ -250,25 +248,22 @@
           min: 30
           group: Airloss
         damage:
-          groups:
-            Airloss: -6
+          Airloss: -6
       - !type:EvenHealthChange
         conditions:
         - !type:DamageGroupCondition
           max: 30
           group: Airloss
         damage:
-          groups:
-            Airloss: -1
+          Airloss: -1
       - !type:EvenHealthChange
         conditions:
         - !type:ReagentCondition
           min: 15.5
           reagent: Salbutamol
         damage:
-          groups: # ODing heals airloss but causes damage
-            Airloss: -6
-            Genetic: 0.2
+          Airloss: -6
+          Genetic: 0.2
 
 - type: reagent
   id: Convermol
@@ -285,7 +280,7 @@
       - !type:HealthChange
         damage:
           types:
-            Asphyxiation: -10
+            Asphyxiation: -10 #This is asphyx. This doesn't heal bloodloss damage specifically.
             Blunt: 4 #Make this lung damage when newmed happens in like 10 years from now
       - !type:Jitter
 
@@ -360,7 +355,7 @@
       - !type:Emote
         emote: Scream
         probability: 0.3
-      - !type:ChemVomit
+      - !type:Vomit
         conditions:
         - !type:ReagentCondition
           min: 15.5
@@ -403,12 +398,11 @@
       metabolismRate: 0.2
       effects:
       - !type:EvenHealthChange
-        damage:
-          groups: #Due to how complicated getting this is (need botany, atmos, and chem on their A game) this should be like 2-3 times better than omni
-            Brute: -4.5
-            Burn: -4.5
-            Toxin: -4.5
-            Airloss: -6
+        damage: #Due to how complicated getting this is (need botany, atmos, and chem on their A game) this should be like 2-3 times better than omni
+          Brute: -4.5
+          Burn: -4.5
+          Toxin: -4.5
+          Airloss: -6
       - !type:ModifyBleed
         amount: -0.5
 
@@ -418,24 +412,24 @@
   name: reagent-name-pyroxadone
   desc: reagent-desc-pyroxadone
   group: Medicine
-  physicalDesc: reagent-physical-dsc-fizzy
+  physicalDesc: reagent-physical-desc-fizzy
   flavor: spicy
   color: "#f8c8ba"
   metabolisms:
     Bloodstream:
-      - effects:
-          - !type:HealthChange
-            conditions:
-            - !type:TemperatureCondition
-              min: 337.3
-            damage:
-              groups: #Identical to cryox*
-                Airloss: -6
-                Brute: -4
-                Burn: -6
-                Toxin: -4
-              types: #*Heat healing is separate to counteract heat damage from temp. Ideally we could just make cryopods not deal heat when inside
-                Heat: -3
+      effects:
+        - !type:HealthChange
+          conditions:
+          - !type:TemperatureCondition
+            min: 337.3
+          damage:
+            groups: #Identical to cryox*
+              Airloss: -6
+              Brute: -4
+              Burn: -6
+              Toxin: -4
+            types: #*Heat healing is separate to counteract heat damage from temp. Ideally we could just make cryopods not deal heat when inside
+              Heat: -3
 
 - type: reagent
   id: Arthyrnkole
