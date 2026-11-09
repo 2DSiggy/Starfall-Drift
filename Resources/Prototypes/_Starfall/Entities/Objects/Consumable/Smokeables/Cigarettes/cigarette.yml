@@ -36,3 +36,17 @@
           Quantity: 10
         - ReagentId: SalicylicAcid
           Quantity: 10
+
+- type: entity
+  id: CigaretteTricordrazine
+  suffix: Tricordrazine
+  parent: Cigarette
+  name: cigarette
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nicotine
+        Quantity: 10
+      - ReagentId: Tricordrazine
+        Quantity: 30

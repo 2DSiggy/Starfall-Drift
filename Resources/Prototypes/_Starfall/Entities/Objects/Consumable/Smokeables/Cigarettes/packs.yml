@@ -1,0 +1,16 @@
+- type: entity
+  id: CigPackInterdyneCivillian
+  parent: CigPackBase
+  name: Interdyne herbals packet
+  suffix: Civillian
+  description: Elite cigarettes for elite syndicate agents. Infused with medicine for when you need to do more than calm your nerves.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi
+  - type: Item
+    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteTricordrazine
+        amount: 10
