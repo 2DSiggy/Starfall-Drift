@@ -5,12 +5,3 @@
   category: Disabilities
   components:
     - type: RandomUnrevivable
-
-- type: trait
-  id: Unborgable
-  name: trait-unborgable-name
-  description: trait-unborgable-desc
-  category: Disabilities
-  components:
-    - type: Unborgable
-  organ: Brain

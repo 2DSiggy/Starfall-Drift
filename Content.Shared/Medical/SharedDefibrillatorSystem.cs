@@ -16,6 +16,8 @@ using Content.Shared.Timing;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Random; // imp rdnr
+using Content.Shared._Impstation.Traits; // imp rdnr
 
 namespace Content.Shared.Medical;
 
@@ -39,6 +41,7 @@ public abstract partial class SharedDefibrillatorSystem : EntitySystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private readonly IRobustRandom _random = default!; // imp rdnr
 
     private readonly HashSet<EntityUid> _interacters = new();
 
@@ -202,6 +205,22 @@ public abstract partial class SharedDefibrillatorSystem : EntitySystem
         {
             _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString(unrevivable.ReasonMessage),
                 InGameICChatType.Speak, true);
+        }
+        // imp edit start, rdnr
+        else if (TryComp<RandomUnrevivableComponent>(target, out var rdnr))
+        {
+            if (rdnr.Chance < 0.5)
+            {
+                _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString("defibrillator-unrevivable"), InGameICChatType.Speak, true);
+                rdnr.Chance = 0f;
+                var addDnr = EnsureComp<UnrevivableComponent>(target);
+                addDnr.Cloneable = true;
+                RemComp<RandomUnrevivableComponent>(target);
+            }
+            else
+            {
+                rdnr.Chance -= 0.1f;
+            }
         }
         else
         {
