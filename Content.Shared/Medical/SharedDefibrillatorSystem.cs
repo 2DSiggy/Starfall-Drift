@@ -41,7 +41,7 @@ public abstract partial class SharedDefibrillatorSystem : EntitySystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!; // imp rdnr
+    [Dependency] private IRobustRandom _random = default!; // imp rdnr
 
     private readonly HashSet<EntityUid> _interacters = new();
 
